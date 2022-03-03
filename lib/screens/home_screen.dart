@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:db_assets_folder_sample/db/database.dart';
 import 'package:db_assets_folder_sample/main.dart';
+import 'package:db_assets_folder_sample/screens/test_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -46,13 +47,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   width: 300,
                   child: ElevatedButton(
-                    onPressed: null, //TODO ボタンを押したときの処理
+                    onPressed: ()=>_startTestScreen(context), //TODO ボタンを押したときの処理
                     style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(Colors.brown)
                     ), // ボタンの背景を茶色にする
                     child: Text(
                       "クイズをする",
-                      style: TextStyle(fontSize: 16, color: Colors.white),
+                      style: TextStyle(fontSize: 22, color: Colors.deepOrangeAccent),
                     ),
                   ),
                 ),
@@ -66,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     child: Text(
                       "記録を見る",
-                      style: TextStyle(fontSize: 16, color: Colors.yellow),
+                      style: TextStyle(fontSize: 22, color: Colors.white),
                     ),
                   ),
                 ),
@@ -75,6 +76,12 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  _startTestScreen(BuildContext context) {
+    Navigator.push(
+      context,MaterialPageRoute(builder: (context)=>TestScreen())
     );
   }
 }
