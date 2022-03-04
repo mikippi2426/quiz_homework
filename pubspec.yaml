@@ -55,6 +55,8 @@ flutter:
   assets:
     - assets/data/quiz.db
     - assets/images/castle.png
+    - assets/images/correct.png
+    - assets/images/incorrect.png
     - assets/images/wood-pattern.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
