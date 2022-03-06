@@ -53,6 +53,7 @@ class MyDatabase extends _$MyDatabase{
   @override
   int get schemaVersion => 1;
 
+  //Read
   Future<List<Question>> get allQuestions => select(questions).get();
 
   Future insertRecord(Record record) => into(records).insert(record);

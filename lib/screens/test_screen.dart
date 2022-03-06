@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:db_assets_folder_sample/db/database.dart';
 
+import '../main.dart';
+
 class TestScreen extends StatefulWidget {
   @override
   _TestScreenState createState() => _TestScreenState();
@@ -11,11 +13,14 @@ class _TestScreenState extends State<TestScreen> {
   int numberOfRemainig = 0;
   int numberOfCorrect = 0;
   int CorrectRate = 0;
-
+  String _textQuestion = "問題文が表示されるよ";
+  String _textAnswerChoice1 = "選択肢1";
+  String _textAnswerChoice2 = "選択肢2";
+  String _textAnswerChoice3 = "選択肢3";
+  String _textAnswerChoice4 = "選択肢4";
   bool isCorrectIncorrectImageEnabled = true;
 
   bool isCorrect = true;
-
 
   @override
   Widget build(BuildContext context) {
@@ -102,6 +107,7 @@ class _TestScreenState extends State<TestScreen> {
     );
   }
 
+
   //TODO 問題文
   Widget _questionPart() {
     return Container(
@@ -114,7 +120,7 @@ class _TestScreenState extends State<TestScreen> {
             "問題",
             style: TextStyle(fontSize: 36.0),
           ),
-          Text(""),
+          Text(_textQuestion),
         ],
       ),
     );
@@ -145,7 +151,7 @@ class _TestScreenState extends State<TestScreen> {
           fixedSize: MaterialStateProperty.all(Size.fromHeight(130)),
           backgroundColor: MaterialStateProperty.all(Colors.teal),
         ),
-        child: Text("選択肢1",
+        child: Text(_textAnswerChoice1,
             style: TextStyle(fontSize: 24, color: Colors.white)),
       ),
     );
@@ -160,7 +166,7 @@ class _TestScreenState extends State<TestScreen> {
             fixedSize: MaterialStateProperty.all(Size.fromHeight(130)),
             backgroundColor: MaterialStateProperty.all(Colors.teal),
           ),
-          child: Text("選択肢2",
+          child: Text(_textAnswerChoice2,
             style: TextStyle(fontSize: 24, color: Colors.white),
           )),
     );
@@ -175,7 +181,7 @@ class _TestScreenState extends State<TestScreen> {
             fixedSize: MaterialStateProperty.all(Size.fromHeight(130)),
             backgroundColor: MaterialStateProperty.all(Colors.teal),
           ),
-          child: Text("選択肢3",
+          child: Text(_textAnswerChoice3,
               style: TextStyle(fontSize: 24, color: Colors.white))),
     );
   }
@@ -189,7 +195,7 @@ class _TestScreenState extends State<TestScreen> {
             fixedSize: MaterialStateProperty.all(Size.fromHeight(130)),
             backgroundColor: MaterialStateProperty.all(Colors.teal),
           ),
-          child: Text("選択肢4",
+          child: Text(_textAnswerChoice4,
               style: TextStyle(fontSize: 24, color: Colors.white))),
     );
   }
@@ -203,4 +209,7 @@ class _TestScreenState extends State<TestScreen> {
       return Container();
     }
   }
+
+
+
 }
