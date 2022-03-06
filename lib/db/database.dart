@@ -53,11 +53,13 @@ class MyDatabase extends _$MyDatabase{
   @override
   int get schemaVersion => 1;
 
-  //Read
+
+
+  //問題の抽出Read
   Future<List<Question>> get allQuestions => select(questions).get();
-
+  //レコードの登録Create
   Future insertRecord(Record record) => into(records).insert(record);
-
+  //レコードの抽出Read
   Future<List<Record>> get allRecords => select(records).get();
 
 }

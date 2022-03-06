@@ -6,7 +6,9 @@
     <!-- You can insert your own image assets here -->
     <item>
         <bitmap
+            android:width="1dp"
+            android:height="1dp"
             android:gravity="center"
-            android:src="@drawable/castle.png" />
+            android:src="@drawable/castle" />
     </item> -->
 </layer-list>

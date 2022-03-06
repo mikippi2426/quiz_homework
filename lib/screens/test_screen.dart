@@ -1,8 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:db_assets_folder_sample/db/database.dart';
 
 import '../main.dart';
+import 'dart:math' as math;
 
 class TestScreen extends StatefulWidget {
   @override
@@ -18,9 +21,30 @@ class _TestScreenState extends State<TestScreen> {
   String _textAnswerChoice2 = "選択肢2";
   String _textAnswerChoice3 = "選択肢3";
   String _textAnswerChoice4 = "選択肢4";
-  bool isCorrectIncorrectImageEnabled = true;
+  bool isCorrectIncorrectImageEnabled = false;
 
-  bool isCorrect = true;
+  bool isCorrect = false;
+
+  List<Question> _testDataList = [];
+  int _index =0;//今何問目
+  late Question _currentQuestion;
+
+
+
+  @override
+  void initState() {
+    super.initState();
+    _getTestData();
+  }
+  void _getTestData() async{
+    _testDataList = await database.allQuestions;
+    _testDataList.shuffle();
+    _currentQuestion=_testDataList[_index];
+    print(_testDataList.toString());
+    setState(() {
+      _textQuestion=_currentQuestion.question;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -209,6 +233,8 @@ class _TestScreenState extends State<TestScreen> {
       return Container();
     }
   }
+
+
 
 
 
