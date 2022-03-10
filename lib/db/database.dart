@@ -27,6 +27,8 @@ class Questions extends Table {
   TextColumn get choice3 => text()();
   TextColumn get explanation => text()();
   BoolColumn get isCorrect => boolean().withDefault(Constant(false))();
+  @override
+  Set<Column> get primaryKey => {id};
 }
 
 class Records extends Table {
@@ -35,7 +37,10 @@ class Records extends Table {
   IntColumn get numberOfQuestion => integer()();
   IntColumn get numberOfCorrect => integer()();
   IntColumn get correctRate => integer()();
+  @override
+  Set<Column> get primaryKey => {id};
 }
+
 
 LazyDatabase _openConnection(String dbPath) {
   return LazyDatabase(() async {
