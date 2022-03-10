@@ -1,24 +1,29 @@
 import 'package:db_assets_folder_sample/db/database.dart';
 import 'package:db_assets_folder_sample/main.dart';
 import 'package:flutter/material.dart';
-
 import 'home_screen.dart';
 
 class EndMessageScreen extends StatefulWidget {
   final int numberOfQuestions;
   final int numberOfCorrect;
   final int CorrectRate;
+  final int numberOfId;
+  var now = DateTime.now();
 
   EndMessageScreen(
       {required this.numberOfQuestions,
       required this.numberOfCorrect,
-      required this.CorrectRate});
+      required this.CorrectRate,
+        required this.numberOfId,
+      });
 
   @override
   _EndMessageScreenState createState() => _EndMessageScreenState();
 }
 
 class _EndMessageScreenState extends State<EndMessageScreen> {
+  int numberOfId=0;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -95,8 +100,25 @@ class _EndMessageScreenState extends State<EndMessageScreen> {
     );
   }
 
-  _backToHomeScreen() {
+  _backToHomeScreen() async{
+
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => HomeScreen()));
-  }
-}
+    var now = DateTime.now();
+    var record = Record(
+      id: numberOfId,
+      date: now.toString(),
+      numberOfQuestion: widget.numberOfQuestions,
+      correctRate: widget.CorrectRate,
+      numberOfCorrect: widget.numberOfCorrect,
+    );
+    database.insertRecord(record);
+    setState(() {
+
+    });
+    }
+
+
+
+    }
+

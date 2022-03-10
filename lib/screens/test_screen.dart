@@ -29,9 +29,12 @@ class _TestScreenState extends State<TestScreen> {
 
   bool isCorrect = false;
 
+
   List<Question> _testDataList = [];
   int _index = 0; //今何問目
   late Question _currentQuestion;
+
+  int numberOfId=1;
 
   @override
   void initState() {
@@ -69,6 +72,32 @@ class _TestScreenState extends State<TestScreen> {
       //print(textQuestion[3]);
     });
   }
+  void _getRecordData() async {
+    _testDataList = await database.allQuestions;
+    _testDataList.shuffle();
+    _currentQuestion = _testDataList[_index];
+    print(_testDataList.toString());
+    isCorrectIncorrectImageEnabled = false;
+    setState(() {
+      _textQuestion = _currentQuestion.question;
+      var textQuestion = [
+        _currentQuestion.answer,
+        _currentQuestion.choice1,
+        _currentQuestion.choice2,
+        _currentQuestion.choice3
+      ];
+      textQuestion.shuffle();
+      _textAnswerChoice1 = textQuestion[0];
+      _textAnswerChoice2 = textQuestion[1];
+      _textAnswerChoice3 = textQuestion[2];
+      _textAnswerChoice4 = textQuestion[3];
+      //print(textQuestion[0]);
+      //print(textQuestion[1]);
+      //print(textQuestion[2]);
+      //print(textQuestion[3]);
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -413,10 +442,13 @@ class _TestScreenState extends State<TestScreen> {
               builder: (context) => EndMessageScreen(
                   numberOfQuestions: numberOfQuestions,
                   numberOfCorrect: numberOfCorrect,
-                  CorrectRate: CorrectRate)));
+                  CorrectRate: CorrectRate,
+                  numberOfId: numberOfId,
+              )));
     } else {
       _getTestData();
       Navigator.pop(context);
+
     }
   }
 
