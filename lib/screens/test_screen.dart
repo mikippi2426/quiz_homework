@@ -19,7 +19,7 @@ class _TestScreenState extends State<TestScreen> {
   int numberOfQuestions = 10;
   int numberOfRemainig = 0;
   int numberOfCorrect = 0;
-  int CorrectRate = 0;
+  int correctRate = 0;
   String _textQuestion = "問題文が表示されるよ";
   String _textAnswerChoice1 = "選択肢1";
   String _textAnswerChoice2 = "選択肢2";
@@ -42,7 +42,7 @@ class _TestScreenState extends State<TestScreen> {
     isCorrectIncorrectImageEnabled = false;
     isCorrect = false;
     numberOfCorrect = 0;
-    CorrectRate = 0;
+    correctRate = 0;
     numberOfRemainig = numberOfQuestions;
     _getTestData();
   }
@@ -125,7 +125,7 @@ class _TestScreenState extends State<TestScreen> {
                     //スコア表示部分
                     _scorePart(),
                     //問題表示部分
-                    _questionPart(),
+                    Expanded(child: _questionPart()),
                     //選択肢ボタン1
                     _answerChoiceButtonPart(),
                   ],
@@ -142,7 +142,7 @@ class _TestScreenState extends State<TestScreen> {
   //スコア表示部分
   _scorePart() {
     return Container(
-      height: 50.0,
+      height: 60.0,
       color: Colors.teal,
       child: Padding(
         padding: const EdgeInsets.only(top: 8.0),
@@ -174,7 +174,7 @@ class _TestScreenState extends State<TestScreen> {
               )),
               Center(
                   child: Text(
-                CorrectRate.toString(),
+                correctRate.toString(),
                 style: TextStyle(fontSize: 19.0),
               )),
             ])
@@ -262,7 +262,7 @@ class _TestScreenState extends State<TestScreen> {
     } else {
       isCorrect = false;
     }
-    CorrectRate =
+    correctRate =
         (numberOfCorrect / (numberOfQuestions - numberOfRemainig) * 100)
             .toInt();
     setState(() {});
@@ -296,7 +296,7 @@ class _TestScreenState extends State<TestScreen> {
     } else {
       isCorrect = false;
     }
-    CorrectRate =
+    correctRate =
         (numberOfCorrect / (numberOfQuestions - numberOfRemainig) * 100)
             .toInt();
     setState(() {});
@@ -328,7 +328,7 @@ class _TestScreenState extends State<TestScreen> {
     } else {
       isCorrect = false;
     }
-    CorrectRate =
+    correctRate =
         (numberOfCorrect / (numberOfQuestions - numberOfRemainig) * 100)
             .toInt();
     setState(() {});
@@ -360,7 +360,7 @@ class _TestScreenState extends State<TestScreen> {
     } else {
       isCorrect = false;
     }
-    CorrectRate =
+    correctRate =
         (numberOfCorrect / (numberOfQuestions - numberOfRemainig) * 100)
             .toInt();
     setState(() {});
@@ -442,7 +442,7 @@ class _TestScreenState extends State<TestScreen> {
               builder: (context) => EndMessageScreen(
                   numberOfQuestions: numberOfQuestions,
                   numberOfCorrect: numberOfCorrect,
-                  CorrectRate: CorrectRate,
+                  correctRate: correctRate,
                   numberOfId: numberOfId,
               )));
     } else {
