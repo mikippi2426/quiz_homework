@@ -69,9 +69,9 @@ class _TestScreenState extends State<TestScreen> {
         body: Container(
           decoration: BoxDecoration(
               image: DecorationImage(
-            image: AssetImage('assets/images/wood-pattern.jpg'),
-            fit: BoxFit.cover,
-          )),
+                image: AssetImage('assets/images/wood-pattern.jpg'),
+                fit: BoxFit.cover,
+              )),
           child: Stack(
             children: [
               Column(
@@ -209,35 +209,36 @@ class _TestScreenState extends State<TestScreen> {
   showAnswer() {
     showDialog(
       context: context,
-      builder: (_) => AlertDialog(
-        title: Row(
-          children: [
-            Container(
-                width: 50,
-                height: 50,
-                child: isCorrect == true
-                    ? Image.asset("assets/images/correct.png")
-                    : Image.asset("assets/images/incorrect.png")),
-            Column(
+      builder: (_) =>
+          AlertDialog(
+            title: Row(
               children: [
-                isCorrect == true ? Text("正解です") : Text("不正解です"),
-                Text(_currentQuestion.answer),
+                Container(
+                    width: 50,
+                    height: 50,
+                    child: isCorrect == true
+                        ? Image.asset("assets/images/correct.png")
+                        : Image.asset("assets/images/incorrect.png")),
+                Column(
+                  children: [
+                    isCorrect == true ? Text("正解です") : Text("不正解です"),
+                    Text(_currentQuestion.answer),
+                  ],
+                ),
               ],
             ),
-          ],
-        ),
-        content: Column(
-          children: [
-            Text("～解説～"),
-            Text(_currentQuestion.explanation),
-          ],
-        ),
-        actions: [
-          Center(
-              child:
-                  TextButton(onPressed: _nextQuestion, child: Text("次の問題に進む")))
-        ],
-      ),
+            content: Column(
+              children: [
+                Text("～解説～"),
+                Text(_currentQuestion.explanation),
+              ],
+            ),
+            actions: [
+              Center(
+                child:
+                TextButton(onPressed: _nextQuestion, child: Text("次の問題に進む"),),),
+            ],
+          ),
     );
   }
 
@@ -246,7 +247,8 @@ class _TestScreenState extends State<TestScreen> {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-              builder: (context) => EndMessageScreen(
+              builder: (context) =>
+                  EndMessageScreen(
                     numberOfQuestions: numberOfQuestions,
                     numberOfCorrect: numberOfCorrect,
                     correctRate: correctRate,
@@ -261,8 +263,8 @@ class _TestScreenState extends State<TestScreen> {
   tableRowText({required String rowText, required double rowFontSize}) {
     return Center(
         child: Text(
-      rowText,
-      style: TextStyle(fontSize: rowFontSize),
-    ));
+          rowText,
+          style: TextStyle(fontSize: rowFontSize),
+        ));
   }
 }
